@@ -15,5 +15,4 @@ const PodcastSummarySchema = new Schema<IPodcastSummary>({
 });
 
 // Create and export the model
-export default mongoose.models.PodcastSummary || 
-  mongoose.model<IPodcastSummary>('PodcastSummary', PodcastSummarySchema); 
+export default mongoose.model<IPodcastSummary>('podcast_summary', PodcastSummarySchema);

@@ -27,6 +27,7 @@ if (!global.mongoose) {
 }
 
 export async function connectToDatabase() {
+  console.log('isConnected', cached.isConnected);
   if (cached.isConnected) {
     return cached.conn;
   }
@@ -54,6 +55,6 @@ export async function connectToDatabase() {
 }
 
 // Connect to MongoDB at startup
-connectToDatabase().catch(err => console.error('Failed to connect to MongoDB:', err));
+// connectToDatabase().catch(err => console.error('Failed to connect to MongoDB:', err));
 
 export default connectToDatabase; 

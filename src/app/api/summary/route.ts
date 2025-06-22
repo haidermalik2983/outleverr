@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import PodcastSummary from '@/db/models/PodcastSummary';
 import { getPodcastEpisode } from '@/services/listenNotesService';
 import { summarizeText } from '@/services/openaiService';
+import connectToDatabase from '@/db/mongodb';
 
 export async function GET(request: NextRequest) {
   try {
@@ -14,6 +15,8 @@ export async function GET(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    await connectToDatabase();
 
     const existingSummary = await PodcastSummary.findOne({ podcast_id: podcastId });
 

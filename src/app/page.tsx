@@ -80,10 +80,10 @@ export default function Home() {
       if (checkResponse.ok) {
         const data = await checkResponse.json();
         setSummary(data.summary);
-        return;
+        toast.success('Summary generated successfully!');
+      }else{
+        toast.error("Failed to generate summary. Please try again later.");
       }
-
-      toast.success('Summary generated successfully!');
     } catch (error: unknown) {
       const errorMessage = error instanceof Error ? error.message : 'Failed to generate summary';
       toast.error(errorMessage);
